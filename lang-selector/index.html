@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>lang-selector</title>
+</head>
+
+<body>
+    <div class="sample-container">
+        <div class="lang-selector__wrapper">
+            <div class="lang-selector">
+                <div class="lang-selector__selected">
+                    <div class="lang-selector__flag lang-selector__hun lang-checked" data-lang-index="1">
+                        <img src="/assets/img/lang/hun.png" class="lang-selector__selected-img" alt="hu-flag">
+                    </div>
+                    <div class="lang-selector__flag lang-selector__uk" data-lang-index="2">
+                        <img src="/assets/img/lang/uk.png" class="lang-selector__selected-img" alt="hu-flag">
+                    </div>
+                    <div class="lang-selector__flag lang-selector__ger" data-lang-index="3">
+                        <img src="/assets/img/lang/ger.png" class="lang-selector__selected-img" alt="hu-flag">
+                    </div>
+                    <div class="lang-selector__flag lang-selector__esp" data-lang-index="4">
+                        <img src="/assets/img/lang/esp.png" class="lang-selector__selected-img" alt="hu-flag">
+                    </div>
+                </div>
+                <div class="lang-selector__picker">
+                    <input type="radio" id="lang-hun" class="lang-selector__checkbox" name="language" value="hun"
+                        data-selector-index="1" checked>
+                    <label for="lang-hun" class="lang-selector__box">
+                        <img src="/assets/img/lang/hun.png" class="lang-selector__picker-img" alt="hu-flag">
+                    </label>
+                    <input type="radio" id="lang-uk" class="lang-selector__checkbox" name="language" value="uk"
+                        data-selector-index="2">
+                    <label for="lang-uk" class="lang-selector__box">
+                        <img src="/assets/img/lang/uk.png" class="lang-selector__picker-img" alt="uk-flag">
+                    </label>
+                    <input type="radio" id="lang-ger" class="lang-selector__checkbox" name="language" value="ger"
+                        data-selector-index="3">
+                    <label for="lang-ger" class="lang-selector__box">
+                        <img src="/assets/img/lang/ger.png" class="lang-selector__picker-img" alt="ger-flag">
+                    </label>
+                    <input type="radio" id="lang-esp" class="lang-selector__checkbox" name="language" value="esp"
+                        data-selector-index="4">
+                    <label for="lang-esp" class="lang-selector__box">
+                        <img src="/assets/img/lang/esp.png" class="lang-selector__picker-img" alt="esp-flag">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/lang-selector.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+//colors
+$color-primary: #DD3333;
+$color-secondary: #912121;
+$color-tertiary: #DE8833;
+
+$color-grey: #333333;
+$color-grey-dark-1: #121212;
+$color-grey-dark-2: #212121;
+$color-grey-dark-3: #373737;
+$color-grey-light-1: #525252;
+$color-grey-light-2: #A8A8A8;
+$color-grey-light-3: #cecece;
+
+$color-white: #FFF;
+$color-yellow: #FC0;
+$color-red: #dd3333;
+
+// helper classes -start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+.sample-container {
+    width: 100vw;
+    height: 50vh;
+    margin: 5rem auto;
+    border: 1px solid $color-grey;
+}
+
+.navigation{
+    display: flex;
+    flex:2;
+    position: relative;
+
+    background-color: $color-primary;
+
+    align-items: stretch;
+    justify-content: space-evenly;
+    
+
+    &__button:first-child {
+        margin-left: auto;
+    }
+    
+    &__button,
+    &__button:visited {
+        color: $color-white;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 1.6rem;
+        padding: 0 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        p{
+            display: flex;
+            align-items: center;
+        }
+        i{
+            margin: -1rem 0 0 .5rem;
+        }
+    }
+
+    &__button:hover,
+    &__button:active {
+        
+        background-color: $color-secondary;
+    }
+    &__button:hover &__cart-count,
+    &__button:active &__cart-count {
+        
+        background-color: $color-primary;
+        color: $color-white;
+        animation: flip-scale .6s;
+    }
+
+}
+
+// helper classes -end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//functionality -start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.toggle-down:hover + .mega-dd,
+.mega-dd:hover{
+    transform: scaleY(1);
+    opacity: 1;    
+}
+
+.toggle-down:hover + .mega-dd>*
+,
+.mega-dd__nav:hover,
+.mega-dd__advert:hover,
+.mega-dd__nav:hover + .mega-dd__advert
+{
+    transform: translateX(0);
+    opacity: 1;   
+}
+
+.mega-dd:hover .mega-dd__nav
+{
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.mega-dd .mega-dd__advert:hover,
+.mega-dd .mega-dd__advert:hover ~ .mega-dd__nav
+{
+    transform: translateX(0);
+    opacity: 1 ;   
+}
+
+//functionality -end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.mega-dd {
+    position: absolute;
+    z-index: 500;
+    width: 80vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        width: 1rem;
+    }
+    &::-webkit-scrollbar-track {
+        background: $color-grey-light-3;
+        
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-grey-light-2; 
+        
+    }
+    &::-webkit-scrollbar-thumb:HOVER {
+        background: $color-secondary; 
+    }
+    // scrollbar-color: ;
+    scrollbar-width: thin;
+    top: 1.6rem;  // positoon of the megamenu (needs a relative positiond parent)
+    right: 0; // positoon of the megamenu (needs a relative positiond parent)
+    border-bottom: 3px solid $color-primary;
+    background-color: $color-white;
+    height: auto;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s, 
+                opacity 0.4s 0.2s;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    
+    grid-template-rows: min-content;
+    &--small {
+        max-width: 40rem; 
+        grid-template-columns: 1fr;
+        padding: .5rem .5rem 0 .5rem;
+    }
+    &__nav,
+    &__advert{
+        transform: translateX(-1rem);
+        opacity: 0;
+        transition:all .4s .4s;
+    }
+    &__nav{
+        grid-column: 1 / 5;
+        padding: 2rem;
+        
+        //params as container
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-gap: 2rem;
+    }
+    &__list{
+        padding-left: 1rem;
+    }
+    &__item{
+        position: relative;
+    }
+    &__item::before{
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background-color: $color-secondary;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.2s, 
+                    width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, 
+                    background-color 0.1s;
+    }
+    &__link{
+        display: block;
+        padding: 1rem 1rem;
+        position: relative;
+        z-index: 550;
+        &:not(:last-child){
+            margin-bottom: .5rem
+        }
+    }
+    &__item:hover::before,
+    &__item:active::before{
+        transform: scaleY(1);
+        width: 100%;
+    }
+
+    &__link:link,
+    &__link:visited{
+        text-decoration: none;
+        color: $color-primary;
+        transition: color .5s .2s;
+        
+    }
+    &__link:hover,
+    &__link:active{
+        color: $color-white;   
+    }
+    &__advert{
+        grid-column: 5 / 7;
+        padding: 4rem;
+
+        //params as container
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+    &__img-container{
+        width: 100%;
+        position: relative;
+    }
+    &__img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        opacity: 0;
+        transition: opacity .2s;
+    }
+}
+
+.fade-in {
+    position: relative;
+    opacity: 1;
+    
+}
+
